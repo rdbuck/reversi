@@ -88,7 +88,7 @@ socket.on('join_room_response',function(payload){
 });
 
 
-	/*What to do when the server says that someone has left the room*/
+/*What to do when the server says that someone has left the room*/
 socket.on('player_disconnected',function(payload){
 	if(payload.result == 'fail'){
 		alert(payload.message);
