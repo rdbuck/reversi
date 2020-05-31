@@ -236,7 +236,7 @@ io.sockets.on('connection', function (socket) {
 								message: message
 							};
 		io.in(room).emit('send_message_response',success_data);
-		log('Message sent to room ' + room + ' by ' + username);
+		log('Message sent to room ' + room + ' by ' + username + 'success_data:'+JSON.stringify(success_data));
 	});
 
 /* Invite command */
@@ -410,9 +410,9 @@ io.sockets.on('connection', function (socket) {
 
  		var requested_user = payload.requested_user;
  		if(('undefined' === typeof requested_user) || !requested_user){
- 			var error_message = 'uninvite didn\'t specify a requested_user, command aborted';
+ 			var error_message = 'game_start didn\'t specify a requested_user, command aborted';
  			log(error_message);
- 			socket.emit('uninvite_response',	{
+ 			socket.emit('game_start_response',	{
  												result: 'fail',
  												message: error_message
  											});
@@ -435,7 +435,6 @@ io.sockets.on('connection', function (socket) {
  		/* If everything is okay respond to the game starter that it was successful */
 
  		var game_id = Math.floor((1+Math.random()) *0x10000).toString(16).substring(1);
-
  		var success_data = {
  								result: 'success',
  								socket_id: requested_user,
@@ -451,7 +450,7 @@ io.sockets.on('connection', function (socket) {
  								game_id: game_id
  							};
 
- 		socket.to(requested_user).emit('game_start', success_data);
+ 		socket.to(requested_user).emit('game_start_response', success_data);
  		log('game_start successful');										
  	});	
 
