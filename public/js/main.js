@@ -337,7 +337,7 @@ socket.on('game_update',function(payload){
 			/* If a board space has changed */
 			if(old_board[row][column] != board [row][column]){
 				if(old_board[row][column] == '?' && board[row][column] == ' '){
-					$('#'+row+'_'+column).html('<img src="assets/images/empty.gif" alt="empty square"/>');
+					$('#'+row+'_'+column).html('<img src="assets/images/empty_copy.gif" alt="empty square"/>');
 				}
 				else if(old_board[row][column] == '?' && board[row][column] == 'w'){
 					$('#'+row+'_'+column).html('<img src="assets/images/snick_token.gif" alt="white square"/>');
